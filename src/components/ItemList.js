@@ -4,7 +4,7 @@ import ItemDetail from "./ItemDetail";
 const ItemList = ({items, addToBasket}) => {
 
   const itemNodes = items.map((item, index) => {
-    return <ItemDetail key={index} index={index} name={item.name} price={item.price} stock={item.stock} addToBasket={addToBasket} />
+    return <ItemDetail key={index} index={index} item={item} addToBasket={addToBasket} />
   });
   
   return (

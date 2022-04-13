@@ -1,6 +1,6 @@
 import React from "react";
 
-const ItemDetail = ({index, name, price, stock, addToBasket}) => {
+const ItemDetail = ({index, item, addToBasket}) => {
 
     const handleClick = () => {
         addToBasket(index);
@@ -8,9 +8,9 @@ const ItemDetail = ({index, name, price, stock, addToBasket}) => {
 
     return(
         <>
-            <p>Name: {name}</p>
-            <p>Price: £{price}</p>
-            <p>Stock: {stock}</p>
+            <p>Name: {item.name}</p>
+            <p>Price: £{item.price}</p>
+            <p>Stock: {item.stock}</p>
             <button onClick={handleClick}>Add to basket</button>
             <br/>
         </>

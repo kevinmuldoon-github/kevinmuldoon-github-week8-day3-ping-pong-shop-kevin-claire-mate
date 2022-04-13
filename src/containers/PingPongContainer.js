@@ -23,22 +23,44 @@ const PingPongContainer = () => {
   const [basket, setBasket] = useState([]);
 
   const addToBasket = (index) => {
+
+      if (items[index].stock>0) { // Only add to basket if in stock
+      // Update Basket
       const itemToAdd = items[index];
       const newBasket = [...basket];
       newBasket.push(itemToAdd);
       setBasket(newBasket);
+      //Update Item Stock Level
       const copyItems = [...items];
       copyItems[index].stock --;
       setItems(copyItems);
+      }
     }
+
+    const removeFromBasket = (index) => {
+      // Update Basket
+      const newBasket = [...basket];
+      const itemToAdd = newBasket.splice(index,1)[0]; // remove item from basket and save as variable
+      console.log(itemToAdd);
+      setBasket(newBasket);
+      //Update Item Stock Level
+      const copyItems = [...items];
+      copyItems.forEach( (item) => {
+        console.log(item.name);
+        if (item.name == itemToAdd.name) { // if item name in array matches item we removed from basket
+          item.stock ++;
+        }
+      });
+      setItems(copyItems);
+    };
 
   return (
     <div id="ping-pong">
         <Header user = {user} />
         {/* <UserContext.Provider value={{user}} > */}
             <div id="items-basket">
-                <ItemList items={items} addToBasket={addToBasket} />
-                <Basket basket={basket}/>
+                <ItemList items={items} addToBasket={addToBasket}/>
+                <Basket basket={basket} removeFromBasket = {removeFromBasket} />
             </div>
         {/* </UserContext.Provider> */}
     </div>

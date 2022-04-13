@@ -1,11 +1,15 @@
 import React from 'react';
 
-const BasketItems = ({name, price}) => {
+const BasketItems = ({item, index, removeFromBasket}) => {
+
+    const handleClick = () => {
+        removeFromBasket(index);
+    }
+
 
     return(
         <div className="basket-item">
-            <p>{name}</p>
-            <p>£{price}</p>
+            <p>{item.name} £{item.price} <button onClick={handleClick}>Remove From Basket</button></p>
         </div>
     )
 }
