@@ -41,12 +41,10 @@ const PingPongContainer = () => {
       // Update Basket
       const newBasket = [...basket];
       const itemToAdd = newBasket.splice(index,1)[0]; // remove item from basket and save as variable
-      console.log(itemToAdd);
       setBasket(newBasket);
       //Update Item Stock Level
       const copyItems = [...items];
       copyItems.forEach( (item) => {
-        console.log(item.name);
         if (item.name == itemToAdd.name) { // if item name in array matches item we removed from basket
           item.stock ++;
         }
